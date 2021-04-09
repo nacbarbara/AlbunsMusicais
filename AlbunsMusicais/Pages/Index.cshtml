@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1 class="text-left display-4 mb-4">Meus álbuns preferidos</h1>
+
+
+<div class="row">
+    @foreach (var album in Model.Albuns)
+    {
+        <div class="card col-md-6 col-lg-4 mb-5">
+            <a asp-page="/NovoAlbum" asp-route-id="@album.Numero">
+                <img class="card-img-top" src="@album.Capa" alt="@album.NomeAlbum">
+                <div class="card-body">
+                    <h4 class="card-title">@album.NomeAlbum</h4>
+                    <div class="genero">
+                        @foreach (var genero in album.Genero)
+                        {
+                            <a href="" class="btn genero-@genero">@genero</a>
+                        }
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
